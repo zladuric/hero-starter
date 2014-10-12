@@ -42,8 +42,8 @@ game.addHealthWell(8,15);
 
 //Add diamond mines
 game.addDiamondMine(2,1);
-game.addDiamondMine(2,3);
-game.addDiamondMine(2,11);
+game.addDiamondMine(12,3);
+game.addDiamondMine(22,11);
 game.addDiamondMine(12,23);
 game.addDiamondMine(8,10);
 game.addDiamondMine(5,9);
@@ -66,7 +66,7 @@ console.log('About to start the game!  Here is what the board looks like:');
 game.board.inspect();
 
 //Play a very short practice game
-var turnsToPlay = 24;
+var turnsToPlay = 1250;
 var myDirs = [];
 for (var i=0; i<turnsToPlay; i++) {
   var hero = game.activeHero;
@@ -109,14 +109,11 @@ for (var i=0; i<turnsToPlay; i++) {
   game.handleHeroTurn(direction);
 }
 console.log('Played ' + i + ' turns.');
-/*for (var i in game.heroes) {
-  var hero = game.heroes[i];
+for (var i = game.heroes.length; i > 0; i--) {
+  var hero = game.heroes[i - 1];
   console.log('======================');
-  console.log('Hero: ', hero.name);
-  console.log('Dead: ', hero.dead);
-  console.log('Hp: ', hero.health);
-  console.log('LastActive: ', hero.lastActiveTurn);
-  console.log('Dead: ', hero.dead);
-}*/
-console.log(myDirs);
-console.log(Object.keys(game))
+  console.log('Hero: ', hero.name, ', ', 'Dead: ', hero.dead, 'LastActive: ', hero.lastActiveTurn);
+  console.log('Hp: ', hero.health, 'Damage: ', hero.damageDone, 'Killed: ', hero.heroesKilled);
+  console.log('Diamonds: ', hero.diamondsEarned);
+}
+

@@ -73,11 +73,11 @@
 var move = function(gameData, helpers) {
   var myHero = gameData.activeHero;
   var dir;
-  if (myHero.health < 40) {
+  if (myHero.health < 51) {
 
     console.log('Looking for health.');
     dir = helpers.findNearestHealthWell(gameData);
-  } else if (myHero.health < 60) {
+  } else if (myHero.health < 71) {
 
     console.log('Looking for diamonds.');
     dir = helpers.findNearestNonTeamDiamondMine(gameData);
