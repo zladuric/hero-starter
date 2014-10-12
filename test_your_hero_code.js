@@ -41,12 +41,51 @@ game.addHealthWell(5,5);
 game.addHealthWell(8,15);
 
 //Add diamond mines
+function setMineCoords() {
+
+    var min_x = 3, min_y = 3;
+    var max_x = 21, max_y = 21;
+    var coords = [];
+    var len = 0;
+    for (var i = 0; i < 25; i++) {
+      coords[i] = [];
+       for (var j = 0; j < 25; j++) {
+         coords[i][j] = 0;
+       }
+    }
+    var x, y, current;
+    while (len < 7) {
+
+       x = min_x + Math.floor(Math.random() * max_x);
+       y = min_y + Math.floor(Math.random() * max_y);
+       if(coords[x][y] == 1) { 
+         console.log('not coording coords at ', x, y);
+
+         continue;
+       }
+         console.log('coording coords at ', x, y);
+       coords [x][y] = 1;
+       len++;
+    }
+    for (var i = 0; i < 25; i++) {
+       for (var j = 0; j < 25; j++) {
+         if(coords[i][j] == 1) {
+           console.log('adding mine at ', i, j);
+            game.addDiamondMine(i, j);
+         }
+       }
+    }
+     }
+setMineCoords();        
+/*
 game.addDiamondMine(2,1);
 game.addDiamondMine(12,3);
 game.addDiamondMine(22,11);
 game.addDiamondMine(12,23);
 game.addDiamondMine(8,10);
 game.addDiamondMine(5,9);
+
+*/
 
 //Add your hero in the top left corner of the map (team 0)
 game.addHero(0, 0, 'MyHero', 0);
