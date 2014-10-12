@@ -72,16 +72,29 @@
 // // This hero will attempt to kill the closest weaker enemy hero.
 var move = function(gameData, helpers) {
   var myHero = gameData.activeHero;
-  if (myHero.health < 60) {
+  var dir;
+  if (myHero.health < 40) {
 
-    return helpers.findNearestHealthWell(gameData);
-  } else if (myHero.health < 40) {
+    console.log('Looking for health.');
+    dir = helpers.findNearestHealthWell(gameData);
+  } else if (myHero.health < 60) {
 
-    return helpers.findNearestNonTeamDiamondMine(gameData);
+    console.log('Looking for diamonds.');
+    dir = helpers.findNearestNonTeamDiamondMine(gameData);
   } else {
 
-    return helpers.findNearestWeakerEnemy(gameData);
+    console.log('Looking for blood.');
+    dir = helpers.findNearestWeakerEnemy(gameData);
+    console.log('Found weak enemy: ', dir);
+    if(!dir) {
+
+      console.log('No weak enemies, looking for anyone.');
+      dir = helpers.findNearestEnemy(gameData);
+    }
   }
+
+  console.log('Direction: ', dir);
+  return dir;
 };
 
 // // The "Safe Diamond Miner"

@@ -17,12 +17,12 @@ Board.prototype.inspect = function() {
       }
     }
     if (i === 0) {
-      console.log(horizontalDivide);
+    //  console.log(horizontalDivide);
     }
-    console.log(line);
-    console.log(horizontalDivide);
+//    console.log(line);
+ //   console.log(horizontalDivide);
   }
-  console.log('********');
+  //console.log('********');
 };
 
 Board.prototype.initializeBoard = function() {

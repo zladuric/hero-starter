@@ -66,8 +66,8 @@ console.log('About to start the game!  Here is what the board looks like:');
 game.board.inspect();
 
 //Play a very short practice game
-var turnsToPlay = 240;
-
+var turnsToPlay = 24;
+var myDirs = [];
 for (var i=0; i<turnsToPlay; i++) {
   var hero = game.activeHero;
   var direction;
@@ -75,6 +75,8 @@ for (var i=0; i<turnsToPlay; i++) {
 
     //Ask your hero brain which way it wants to move
     direction = heroMoveFunction(game, helpers);
+    myDirs.push('' + direction);
+
   } else if (hero.name === 'FriendAssasin') {
 
     direction = friendAssasin(game, helpers);
@@ -96,16 +98,18 @@ for (var i=0; i<turnsToPlay; i++) {
     direction = enemyPriest(game, helpers);
 
   }
+  /*
   console.log('-----');
   console.log('Turn ' + i + ':');
   console.log('-----');
   console.log(hero.name + ' tried to move ' + direction);
   console.log(hero.name + ' owns ' + hero.mineCount + ' diamond mines')
   console.log(hero.name + ' has ' + hero.health + ' health')
+  */
   game.handleHeroTurn(direction);
 }
 console.log('Played ' + i + ' turns.');
-for (var i in game.heroes) {
+/*for (var i in game.heroes) {
   var hero = game.heroes[i];
   console.log('======================');
   console.log('Hero: ', hero.name);
@@ -113,6 +117,6 @@ for (var i in game.heroes) {
   console.log('Hp: ', hero.health);
   console.log('LastActive: ', hero.lastActiveTurn);
   console.log('Dead: ', hero.dead);
-}
-console.log(game.winningTeam);
+}*/
+console.log(myDirs);
 console.log(Object.keys(game))
