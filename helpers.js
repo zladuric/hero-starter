@@ -245,5 +245,30 @@ helpers.findNearestTeamMember = function(gameData) {
   //Return the direction that needs to be taken to achieve the goal
   return pathInfoObject.direction;
 };
+helpers.getDistanceToNearestEnemy= function(gameData) {
+  var hero = gameData.activeHero;
+  var board = gameData.board;
 
+  //Get the path info object
+  var pathInfoObject = helpers.findNearestObjectDirectionAndDistance(board, hero, function(heroTile) {
+    return heroTile.type === 'Hero' && heroTile.team !== hero.team;
+  });
+
+  //Return the direction that needs to be taken to achieve the goal
+  console.log(pathInfoObject);
+  return pathInfoObject;
+}
+helpers.getDistanceToNearestFriend = function(gameData) {
+  var hero = gameData.activeHero;
+  var board = gameData.board;
+
+  //Get the path info object
+  var pathInfoObject = helpers.findNearestObjectDirectionAndDistance(board, hero, function(heroTile) {
+    return heroTile.type === 'Hero' && heroTile.team === hero.team;
+  });
+
+  //Return the direction that needs to be taken to achieve the goal
+  console.log(pathInfoObject);
+  return pathInfoObject;
+}
 module.exports = helpers;

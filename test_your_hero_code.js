@@ -26,6 +26,7 @@ var Game = require('./game_logic/Game.js');
 var heroMoveFunction = require('./hero.js');
 var friendAssasin = require('./friend_assasin.js');
 var friendHunter = require('./friend_diamond_hunter.js');
+var friendPriest= require('./friend_priest.js');
 
 //The move function ("brain") the practice enemy will use
 var enemyMoveFunction = require('./enemy_assasin.js');
@@ -90,7 +91,7 @@ game.addDiamondMine(5,9);
 //Add your hero in the top left corner of the map (team 0)
 game.addHero(0, 0, 'MyHero', 0);
 game.addHero(4, 0, 'FriendAssasin', 0);
-game.addHero(7, 0, 'FriendHunter', 0);
+game.addHero(7, 0, 'FriendPriest', 0);
 
 //Add an enemy hero in the bottom left corner of the map (team 1)
 game.addHero(24, 24, 'Enemy', 1);
@@ -120,9 +121,9 @@ for (var i=0; i<turnsToPlay; i++) {
 
     direction = friendAssasin(game, helpers);
     
-  } else if (hero.name === 'FriendHunter') {
+  } else if (hero.name === 'FriendPriest') {
     
-    direction = friendHunter(game, helpers);
+    direction = friendPriest(game, helpers);
 
   } else if (hero.name === 'Enemy') {
 
