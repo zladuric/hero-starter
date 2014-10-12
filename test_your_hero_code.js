@@ -114,4 +114,5 @@ for (var i in game.heroes) {
   console.log('LastActive: ', hero.lastActiveTurn);
   console.log('Dead: ', hero.dead);
 }
+console.log(game.winningTeam);
 console.log(Object.keys(game))
